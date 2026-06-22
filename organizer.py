@@ -19,18 +19,18 @@ def organize_workspace(target_directory):
         print(f"Hmm, let me look at this file: {filename}")
         file_path = os.path.join(target_directory, filename)
 
-        # Skip if it is a folder, we only want to move files
+      # Skip if it is a folder, we only want to move files
         if os.path.isdir(file_path):
             continue
 
         # If it's a text or pdf file, move it to Documents
-        if filename.endswith('.txt') or filename.endswith('.pdf'):
+        if filename.lower().endswith('.txt') or filename.lower().endswith('.pdf'):
             destination = os.path.join(doc_folder, filename)
             shutil.move(file_path, destination)
             print(f"Moved: {filename} -> Documents folder")
             
         # If it's a jpg or png, move it to Images
-        elif filename.endswith('.jpg') or filename.endswith('.png'):
+        elif filename.lower().endswith('.jpg') or filename.lower().endswith('.png'):
             destination = os.path.join(image_folder, filename)
             shutil.move(file_path, destination)
             print(f"Moved: {filename} -> Images folder")
